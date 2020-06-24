@@ -36,4 +36,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role()
+    {
+        // belongsTo(RelatedModel, foreignKey = role_id, keyOnRelatedModel = id)
+        return $this->belongsTo('App\Role');
+    }
+
+    public function isRole($role){
+        if ($this->role->name == $role) {
+            return  true;
+        }
+        return false;
+    }
 }
