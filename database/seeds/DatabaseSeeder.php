@@ -12,10 +12,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        factory('App\User', 10)->create()->each(function($user){
-            $user->posts()->save(factory('App\Post')->make());
+        factory(App\User::class, 5)->create()->each(function ($user) {
+            $user->posts()->save(factory(App\Post::class)->make());
         });
         // factory('App\Post', 10)->create();
+        // factory('App\User', 10)->create();
 
     }
 }
