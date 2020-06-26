@@ -1,12 +1,17 @@
 <x-admin-master>
 
 @section('content')
-    <h1 class="h3 mb-4 text-gray-800">All Posts</h1>
+
+    @if (Session('post_delete_message'))
+        <div class="alert alert-danger">{{Session('post_delete_message')}}</div>
+    @elseif(Session('post_create_message'))
+        <div class="alert alert-success">{{Session('post_create_message')}}</div>
+    @endif
 
     {{-- datatable --}}
     <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+              <h1 class="m-0 font-weight-bold text-primary">All Posts</h1>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -19,15 +24,18 @@
                       <th>Image</th>
                       <th>Created At</th>
                       <th>Updated At</th>
+                      <th>Delete</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th>Id</th>
+                      <th>Owner</th>
                       <th>Title</th>
                       <th>Image</th>
                       <th>Created At</th>
                       <th>Updated At</th>
+                      <th>Delete</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -39,6 +47,13 @@
                         <td><img height="40px" src="{{$post->post_image}}"></td>
                         <td>{{$post->created_at->diffForHumans()}}</td>
                         <td>{{$post->updated_at->diffForHumans()}}</td>
+                        <td>
+                            <form method="post" action="{{ route('post.delete', $post->id) }}" enctype="miltipart/form-data">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                   </tbody>

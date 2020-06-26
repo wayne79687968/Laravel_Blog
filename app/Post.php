@@ -18,4 +18,14 @@ class Post extends Model
         // belongsTo(RelatedModel, foreignKey = user_id, keyOnRelatedModel = id)
         return $this->belongsTo('App\User');
     }
+
+    // public function setPostImageAttribute($value)
+    // {
+    //     $this->arttributes['post_image'] = asset($value);
+    // }
+
+    public function getPostImageAttribute($value)
+    {
+        return asset($value);
+    }
 }
