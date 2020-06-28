@@ -6,6 +6,8 @@
         <div class="alert alert-danger">{{Session('post_delete_message')}}</div>
     @elseif(Session('post_create_message'))
         <div class="alert alert-success">{{Session('post_create_message')}}</div>
+    @elseif(Session('post_update_message'))
+        <div class="alert alert-success">{{Session('post_update_message')}}</div>
     @endif
 
     {{-- datatable --}}
@@ -24,6 +26,7 @@
                       <th>Image</th>
                       <th>Created At</th>
                       <th>Updated At</th>
+                      <th>Edit</th>
                       <th>Delete</th>
                     </tr>
                   </thead>
@@ -35,6 +38,7 @@
                       <th>Image</th>
                       <th>Created At</th>
                       <th>Updated At</th>
+                      <th>Edit</th>
                       <th>Delete</th>
                     </tr>
                   </tfoot>
@@ -44,9 +48,14 @@
                         <td>{{$post->id}}</td>
                         <td>{{$post->user->name}}</td>
                         <td>{{$post->title}}</td>
-                        <td><img height="40px" src="{{$post->post_image}}"></td>
+                        <td><img width="200px" src="{{$post->post_image}}"></td>
                         <td>{{$post->created_at->diffForHumans()}}</td>
                         <td>{{$post->updated_at->diffForHumans()}}</td>
+                        <td>
+                            <form method="get" action="{{ route('post.edit', $post->id) }}" enctype="miltipart/form-data">
+                                @csrf
+                                <button class="btn btn-success">Edit</button>
+                            </form>
                         <td>
                             <form method="post" action="{{ route('post.delete', $post->id) }}" enctype="miltipart/form-data">
                                 @csrf

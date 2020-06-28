@@ -42,11 +42,9 @@
           </li> --}}
 
           @if (Auth::check())
-          @if (Auth::user()->isRole('Admin'))
           <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.index') }}">Admin</a>
           </li>
-          @endif
 
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}"
