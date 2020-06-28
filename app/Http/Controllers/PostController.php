@@ -71,9 +71,9 @@ class PostController extends Controller
     public function index()
     {
         if (auth()->user()->isrole('Admin')) {
-            $posts = Post::paginate(5);
+            $posts = Post::orderBy('id', 'desc')->paginate(5);
         }else{
-            $posts = auth()->user()->posts()->paginate(2);
+            $posts = auth()->user()->posts()->orderBy('id', 'desc')->paginate(5);
         }
         return view('admin.posts.index', ['posts'=>$posts]);
     }

@@ -43,9 +43,9 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                    @foreach ($posts as $post)
+                    @foreach ($posts as $key => $post)
                     <tr>
-                        <td>{{$post->id}}</td>
+                        <td>{{$posts->firstItem() + $key}}</td>
                         <td>{{$post->user->name}}</td>
                         <td>{{$post->title}}</td>
                         <td><img width="200px" src="{{$post->post_image}}"></td>
