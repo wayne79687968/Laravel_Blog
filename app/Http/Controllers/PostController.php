@@ -20,6 +20,8 @@ class PostController extends Controller
 
     public function store()
     {
+        $this->authorize('create', Post::class);
+
         $inputs = request()->validate([
             'title' => 'required | min:8 | max:255',
             'post_image' => 'mimes:jpg,jpeg,png',
@@ -51,11 +53,15 @@ class PostController extends Controller
         }
         $post->title = $inputs['title'];
         $post->content = $inputs['content'];
-        auth()->user()->posts()->save($post);
 
-        //不更改發布者
+        $this->authorize('update', $post);
+
+        //更改發布者
+        // auth()->user()->posts()->save($post);
+
+        // 不更改發布者
         // $post->save();
-        // $post->update();
+        $post->update();
 
         Session::flash('post_update_message', 'Post with title "' . $inputs['title'] . '" was Updated');
 
@@ -66,15 +72,18 @@ class PostController extends Controller
     {
         if (auth()->user()->isrole('Admin')) {
             $posts = Post::all();
+            $posts = $posts->paginate(5);
         }else{
 
-        $posts = auth()->user()->posts;
+        $posts = auth()->user()->posts()->paginate(2);
         }
         return view('admin.posts.index', ['posts'=>$posts]);
     }
 
     public function delete(Post $post, Request $request)
     {
+        $this->authorize('delete', $post);
+
         $post->delete();
         //Session::flash('message', 'Post was deleted');
         $request->session()->flash('post_delete_message', 'Post with title "' . $post->title . '" was deleted');
@@ -83,6 +92,8 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        $this->authorize('view', $post);
+
         return view('admin.posts.edit', ['post'=>$post]);
     }
 }
