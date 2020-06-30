@@ -1,7 +1,13 @@
 <x-admin-master>
 
 @section('content')
-      <h1 class="h3 mb-4 text-gray-800">Dash Board</h1>
+
+    @if (auth()->user()->isRole('Admin'))
+
+    <h1 class="h3 mb-4 text-gray-800">Dash Board</h1>
+
+    @endif
+
 
 
 @endsection

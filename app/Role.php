@@ -6,10 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
+
+    protected $guarded = [];
+
     /**
-     * Fields that can be mass assigned.
+     * Role belongs to Permissions.
      *
-     * @var array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    protected $fillable = ['name'];
+    public function permissions()
+    {
+        // belongsTo(RelatedModel, foreignKey = permissions_id, keyOnRelatedModel = id)
+        return $this->belongsToMany(Permission::class);
+    }
+
+    /**
+     * Role belongs to Users.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function Users()
+    {
+        // belongsTo(RelatedModel, foreignKey = user_id, keyOnRelatedModel = id)
+        return $this->belongsToMany(User::class);
+    }
 }

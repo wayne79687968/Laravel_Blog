@@ -36,19 +36,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function role()
-    {
-        // belongsTo(RelatedModel, foreignKey = role_id, keyOnRelatedModel = id)
-        return $this->belongsTo('App\Role');
-    }
-
-    public function isRole($role){
-        if ($this->role->name == $role) {
-            return  true;
-        }
-        return false;
-    }
     /**
      * User has many Posts.
      *
@@ -58,5 +45,37 @@ class User extends Authenticatable
     {
         // hasMany(RelatedModel, foreignKeyOnRelatedModel = user_id, localKey = id)
         return $this->hasMany('App\Post');
+    }
+
+    /**
+     * User belongs to Permissions.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function permissions()
+    {
+        // belongsTo(RelatedModel, foreignKey = permissions_id, keyOnRelatedModel = id)
+        return $this->belongsToMany(Permission::class);
+    }
+
+    /**
+     * User belongs to Roles.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function roles()
+    {
+        // belongsTo(RelatedModel, foreignKey = roles_id, keyOnRelatedModel = id)
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function isRole($role_name)
+    {
+        foreach ($this->roles as $role) {
+            if ($role_name == $role->name) {
+                return true;
+            }
+        }
+        return false;
     }
 }
