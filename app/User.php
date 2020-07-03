@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role_id'
+        'username', 'name', 'email', 'password', 'role_id', 'avatar'
     ];
 
     /**
@@ -77,5 +77,16 @@ class User extends Authenticatable
             }
         }
         return false;
+    }
+
+    //mutator
+    // public function setPasswordAttribute($value)
+    // {
+    //     $this->attributes['password'] = bcrypt($value);
+    // }
+
+    public function getAvatarAttribute($value)
+    {
+        return asset('storage/' . $value);
     }
 }
