@@ -9,7 +9,7 @@ class UsersController extends Controller
 {
     public function show(User $user)
     {
-        return view('admin.users.profile', ['user'=>$user]);
+        return view('admin.users.profile', ['user' => $user]);
     }
 
     public function update(User $user)
@@ -26,6 +26,23 @@ class UsersController extends Controller
         }
         $user->update($inputs);
 
+        return back();
+    }
+
+    public function index()
+    {
+        $users = User::all();
+
+        return view('admin.users.index', ['users' => $users]);
+    }
+
+    public function delete(User $user, Request $request)
+    {
+        // $this->authorize('delete', $user);
+
+        $user->delete();
+        //Session::flash('message', 'Post was deleted');
+        $request->session()->flash('user_delete_message', 'User "' . $user->username . '" was deleted');
         return back();
     }
 }

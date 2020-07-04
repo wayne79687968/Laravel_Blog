@@ -43,8 +43,16 @@ Route::middleware('auth')->group(function(){
     Route::delete('/admin/posts/{post}/delete', 'PostController@delete')->middleware('can:view,post')->name('post.delete');
 //Post-----------------------------------------------------------------
 
-    //show profile
+//User-----------------------------------------------------------------
+    //Show profile
     Route::get('/admin/users/{user}/profile', 'UsersController@show')->name('user.profile.show');
-    //update profile
+    //Update profile
     Route::post('admin/users/{user}/update', 'UsersController@update')->name('user.profile.update');
+    //Show all user
+    Route::get('admin/users', 'UsersController@index')->name('users.index');
+    //Update user
+    // Route::patch('admin/users/{user}/update', 'UsersController@update')->name('user.update');
+    //Delete user
+    Route::delete('admin/users/{user}/delete', 'UsersController@delete')->name('user.delete');
+//User-----------------------------------------------------------------
 });
