@@ -48,11 +48,16 @@ Route::middleware('auth')->group(function(){
     Route::get('/admin/users/{user}/profile', 'UsersController@show')->name('user.profile.show');
     //Update profile
     Route::post('admin/users/{user}/update', 'UsersController@update')->name('user.profile.update');
-    //Show all user
-    Route::get('admin/users', 'UsersController@index')->name('users.index');
     //Update user
     // Route::patch('admin/users/{user}/update', 'UsersController@update')->name('user.update');
     //Delete user
     Route::delete('admin/users/{user}/delete', 'UsersController@delete')->name('user.delete');
 //User-----------------------------------------------------------------
+
+});
+
+Route::middleware('role:admin')->group(function(){
+    //Show all user
+    Route::get('admin/users', 'UsersController@index')->name('users.index');
+
 });
