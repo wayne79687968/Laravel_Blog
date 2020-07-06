@@ -1,6 +1,9 @@
 <x-admin-master>
 
 @section('content')
+    @if (Session('user_update_message'))
+        <div class="alert alert-success">{{Session('user_update_message')}}</div>
+    @endif
     <h1>User Profile</h1>
     <form method="post" action="{{ route('user.profile.update', $user->id) }}" enctype="multipart/form-data">
         @csrf
@@ -12,7 +15,7 @@
         </div>
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" name="username" class="form- @error('username') is-invalid @enderror" value="{{$user->username}}">
+            <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" value="{{$user->username}}">
 
             @error('username')
                 <span class="invalid-feedback" role="alert">

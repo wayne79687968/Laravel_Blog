@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class UsersController extends Controller
 {
@@ -25,6 +26,7 @@ class UsersController extends Controller
             $inputs['avatar'] = request('avatar')->store('images', ['disk' => 'public']);
         }
         $user->update($inputs);
+        Session::flash('user_update_message', 'User profile was updated');
 
         return back();
     }

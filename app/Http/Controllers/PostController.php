@@ -29,7 +29,7 @@ class PostController extends Controller
         ]);
 
         if (request('post_image')) {
-            $inputs['post_image'] = 'storage/' . request('post_image')->store('images', ['disk' => 'public']);
+            $inputs['post_image'] = request('post_image')->store('images', ['disk' => 'public']);
         }
 
         auth()->user()->posts()->create($inputs);
