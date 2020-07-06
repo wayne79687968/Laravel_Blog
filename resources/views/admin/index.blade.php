@@ -1,4 +1,4 @@
-<x-admin-master>
+<x-admin.admin-master>
 
 @section('content')
 
@@ -16,4 +16,4 @@
 
 
 
-</x-admin-master>
+</x-admin.admin-master>

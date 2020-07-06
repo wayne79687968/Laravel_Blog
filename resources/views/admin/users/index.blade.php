@@ -1,4 +1,4 @@
-<x-admin-master>
+<x-admin.admin-master>
 
 @section('content')
     @if (Session('user_delete_message'))
@@ -86,4 +86,4 @@
     <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
 @endsection
 
-</x-admin-master>
+</x-admin.admin-master>

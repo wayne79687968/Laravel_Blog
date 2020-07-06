@@ -1,4 +1,4 @@
-<x-admin-master>
+<x-admin.admin-master>
 
 @section('content')
     @if (Session('user_update_message'))
@@ -61,4 +61,4 @@
     </form>
 @endsection
 
-</x-admin-master>
+</x-admin.admin-master>

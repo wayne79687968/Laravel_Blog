@@ -1,4 +1,4 @@
-<x-admin-master>
+<x-admin.admin-master>
 
 @section('content')
 
@@ -82,4 +82,4 @@
     {{-- <script src="{{ asset('js/demo/datatables-demo.js') }}"></script> --}}
 @endsection
 
-</x-admin-master>
+</x-admin.admin-master>
