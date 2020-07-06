@@ -1,6 +1,6 @@
 <li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePost" aria-expanded="true" aria-controls="collapseTwo">
-  <i class="fas fa-fw fa-cog"></i>
+  <i class="fas fa-fw fa-edit"></i>
   <span>Posts</span>
   </a>
   <div id="collapsePost" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">

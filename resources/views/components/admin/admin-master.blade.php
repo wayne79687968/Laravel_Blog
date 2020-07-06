@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Blank</title>
+  <title>Blog Backstage</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -32,9 +32,9 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="fa fa-book"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">BLOG BACKSTAGE</div>
       </a>
 
       <!-- Divider -->
@@ -62,6 +62,12 @@
     {{-- 只有Admin可看到 --}}
     @if (auth()->user()->isRole('Admin'))
     <x-admin.sidebar.admin-sidebar-users-links></x-admin.sidebar.admin-sidebar-users-links>
+    @endif
+
+    <!-- Nav Item - Users Collapse Menu -->
+    {{-- 只有Admin可看到 --}}
+    @if (auth()->user()->isRole('Admin'))
+    <x-admin.sidebar.authorization-links></x-admin.authorization-links>
     @endif
 
       <!-- Nav Item - Utilities Collapse Menu -->
