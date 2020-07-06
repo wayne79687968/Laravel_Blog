@@ -80,7 +80,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapPostRoutes()
     {
-        Route::middleware('web')
+        Route::middleware(['web', 'auth'])
             ->namespace($this->namespace)
             ->group(base_path('routes/web/posts.php'));
     }
@@ -94,7 +94,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapUserRoutes()
     {
-        Route::middleware('web')
+        Route::middleware(['web', 'auth'])
             ->namespace($this->namespace)
             ->group(base_path('routes/web/users.php'));
     }
@@ -108,7 +108,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapRoleRoutes()
     {
-        Route::middleware('web')
+        Route::middleware(['web', 'role:admin', 'auth'])
             ->namespace($this->namespace)
             ->group(base_path('routes/web/roles.php'));
     }
@@ -122,7 +122,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapPermissionRoutes()
     {
-        Route::middleware('web')
+        Route::middleware(['web', 'role:admin', 'auth'])
             ->namespace($this->namespace)
             ->group(base_path('routes/web/permissions.php'));
     }

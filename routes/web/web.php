@@ -26,12 +26,8 @@ Route::get('/post/{post}', 'PostController@show')->name('post');
 
 //Auth-----------------------------------------------------------------
 Route::middleware('auth')->group(function(){
-    //show index
-    Route::get('/admin/posts', 'PostController@index')->name('post.index');
     //show admin
     Route::get('/admin', 'AdminController@index')->name('admin.index');
-
-
 });
 
 
