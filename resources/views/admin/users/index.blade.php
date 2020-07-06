@@ -26,7 +26,7 @@
                             <th>Email</th>
                             <th>Registered Date</th>
                             <th>Updated Profile Date</th>
-                            {{-- <th>Edit</th> --}}
+                            <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -39,7 +39,7 @@
                             <th>Email</th>
                             <th>Registered Date</th>
                             <th>Updated Profile Date</th>
-                            {{-- <th>Edit</th> --}}
+                            <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </tfoot>
@@ -54,12 +54,12 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->created_at->diffForHumans()}}</td>
                             <td>{{$user->updated_at->diffForHumans()}}</td>
-                            {{-- <td>
-                                <form method="get" action="{{ route('user.edit', $user->id) }}" enctype="miltipart/form-data">
+                            <td>
+                                <form method="get" action="{{ route('user.profile.show', $user->id) }}" enctype="miltipart/form-data">
                                     @csrf
                                     <button class="btn btn-success">Edit</button>
                                 </form>
-                            </td> --}}
+                            </td>
                             <td>
                                 <form method="post" action="{{ route('user.delete', $user->id) }}" enctype="miltipart/form-data">
                                     @csrf

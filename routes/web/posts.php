@@ -1,5 +1,6 @@
 <?php
-
+//Auth-----------------------------------------------------------------
+Route::middleware('auth')->group(function(){
 //Post-----------------------------------------------------------------
     //show post
     Route::post('/admin/posts', 'PostController@store')->name('post.store');
@@ -12,5 +13,5 @@
     //delete post
     Route::delete('/admin/posts/{post}/delete', 'PostController@delete')->middleware('can:view,post')->name('post.delete');
 //Post-----------------------------------------------------------------
-
+});
 ?>

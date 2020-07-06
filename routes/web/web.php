@@ -21,7 +21,6 @@ Route::get('blog', function() {
 });
 
 Route::get('/', 'HomeController@index')->name('home');
-
 Route::get('/post/{post}', 'PostController@show')->name('post');
 
 
@@ -33,26 +32,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/admin', 'AdminController@index')->name('admin.index');
 
 
-//User-----------------------------------------------------------------
-    //Update profile
-    Route::post('admin/users/{user}/update', 'UsersController@update')->name('user.profile.update');
-    //Update user
-    // Route::patch('admin/users/{user}/update', 'UsersController@update')->name('user.update');
-    //Delete user
-    Route::delete('admin/users/{user}/delete', 'UsersController@delete')->name('user.delete');
-//User-----------------------------------------------------------------
-
 });
 
 
-//Admin-----------------------------------------------------------------
-Route::middleware(['role:admin', 'auth'])->group(function(){
-    //Show all user
-    Route::get('admin/users', 'UsersController@index')->name('users.index');
 
-});
-
-Route::middleware(['auth', 'can:view,user'])->group(function(){
-    //Show profile
-    Route::get('/admin/users/{user}/profile', 'UsersController@show')->name('user.profile.show');
-});
