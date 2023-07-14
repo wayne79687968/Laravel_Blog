@@ -17,11 +17,13 @@
 
         <hr>
 
+        @if ($post->post_image)
         <!-- Preview Image -->
         <img class="img-fluid rounded" src="{{$post->post_image}}" alt="image missing...">
 
         <hr>
-
+        @endif
+        
         <!-- Post Content -->
         <p class="lead">{{$post->content}}</p>
 
