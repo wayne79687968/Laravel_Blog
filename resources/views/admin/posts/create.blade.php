@@ -13,6 +13,14 @@
             <input type="file" name="post_image" class="form-control-file" id="post_image">
         </div>
         <div class="form-group">
+            <label for="category">Category</label>
+            <select name="category" class="form-control" id="category">
+                <option value="Coding">Coding</option>
+                <option value="Boardgame">Boardgame</option>
+                <option value="Photography">Photography</option>
+            </select>
+        </div>
+        <div class="form-group">
             <textarea name="content" class="form-control" id="content" cols="30" rows="10"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>

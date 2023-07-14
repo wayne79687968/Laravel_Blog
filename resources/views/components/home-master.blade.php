@@ -109,26 +109,20 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="#">Web Design</a>
+                    <a href="{{route('home') . '?c=Coding'}}">Coding</a>
                   </li>
                   <li>
-                    <a href="#">HTML</a>
-                  </li>
-                  <li>
-                    <a href="#">Freebies</a>
+                    <a href="{{route('home') . '?c=Boardgame'}}">Boardgame</a>
                   </li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="#">JavaScript</a>
+                    <a href="{{route('home') . "?c=Photography"}}">Photography</a>
                   </li>
                   <li>
-                    <a href="#">CSS</a>
-                  </li>
-                  <li>
-                    <a href="#">Tutorials</a>
+                    <a href="{{ route('home') }}">All</a>
                   </li>
                 </ul>
               </div>

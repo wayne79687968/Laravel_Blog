@@ -25,6 +25,7 @@ class PostController extends Controller
         $inputs = request()->validate([
             'title' => 'required | min:8 | max:255',
             'post_image' => 'mimes:jpg,jpeg,png',
+            'category' => 'required',
             'content' => 'required'
         ]);
 

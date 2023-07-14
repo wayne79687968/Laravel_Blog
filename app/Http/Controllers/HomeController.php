@@ -24,7 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        if (request('c')) {
+            $posts = Post::where('category', request('c'))->orderByDesc('id')->get();
+        } else {
+            $posts = Post::orderByDesc('id')->get();
+        }
+
         return view('home', ['posts' => $posts]);
     }
 }
