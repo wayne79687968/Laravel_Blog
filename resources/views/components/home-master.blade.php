@@ -119,7 +119,7 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="{{route('home') . "?c=Photography"}}">Photography</a>
+                    <a href="{{route('home') . '?c=Photography'}}">Photography</a>
                   </li>
                   <li>
                     <a href="{{ route('home') }}">All</a>
