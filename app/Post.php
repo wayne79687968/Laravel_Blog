@@ -26,6 +26,20 @@ class Post extends Model
 
     public function getPostImageAttribute($value)
     {
-        return asset('storage/' . $value);
+        if ($value) {
+            return asset('storage/' . $value);
+        } else {
+            return "";
+        }
+    }
+
+    /**
+     * User has many Comments.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 }

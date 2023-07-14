@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -10,7 +11,8 @@ class PostController extends Controller
 {
     public function show(Post $post)
     {
-        return view('blog-post', ['post'=>$post]);
+        $comments = Comment::where('posts_id', $post->id)->get();
+        return view('blog-post', ['post'=>$post, 'comments'=>$comments]);
     }
 
     public function create()
